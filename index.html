@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#f5adff",
+                    "on-secondary": "#00363a",
+                    "tertiary": "#d1bcff",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#7a0093",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "error-container": "#93000a",
+                    "background": "#121318",
+                    "on-surface": "#e3e1e9",
+                    "on-primary-fixed": "#350041",
+                    "on-tertiary-container": "#34007f",
+                    "on-secondary-fixed": "#002022",
+                    "secondary-container": "#00eefc",
+                    "on-primary-container": "#4b005c",
+                    "surface-container-low": "#1a1b21",
+                    "on-surface-variant": "#d7bfd6",
+                    "primary-fixed-dim": "#f5adff",
+                    "on-tertiary-fixed-variant": "#5700c9",
+                    "surface-container-highest": "#34343a",
+                    "surface": "#121318",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#34343a",
+                    "outline-variant": "#534154",
+                    "on-background": "#e3e1e9",
+                    "tertiary-fixed-dim": "#d1bcff",
+                    "inverse-primary": "#a000c0",
+                    "tertiary-fixed": "#e9ddff",
+                    "primary-fixed": "#fed6ff",
+                    "on-primary": "#560069",
+                    "surface-container": "#1e1f25",
+                    "surface-container-lowest": "#0d0e13",
+                    "on-tertiary-fixed": "#23005b",
+                    "outline": "#9f8a9f",
+                    "surface-tint": "#f5adff",
+                    "surface-bright": "#38393f",
+                    "primary-container": "#de4dff",
+                    "inverse-surface": "#e3e1e9",
+                    "secondary": "#d3fbff",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#2f3036",
+                    "surface-dim": "#121318",
+                    "secondary-fixed": "#7df4ff",
+                    "on-secondary-container": "#00686f",
+                    "tertiary-container": "#a178ff",
+                    "on-tertiary": "#3c0090",
+                    "surface-container-high": "#292a2f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "margin": "2rem",
+                    "gutter": "1.5rem",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Grotesk"],
+                    "display-xl": ["Space Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-sm": ["Geist"],
+                    "body-base": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg": ["2.5rem", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-xl": ["4.5rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["0.75rem", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["1.75rem", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-sm": ["0.875rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-base": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #121318;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(245, 173, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(18, 19, 24, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 19, 24, 0.8) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        .glass-card {
+            background: rgba(30, 31, 37, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(215, 191, 214, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .glow-border-cyan {
+            border: 1px solid rgba(0, 238, 252, 0.3);
+            box-shadow: 0 0 15px rgba(0, 238, 252, 0.1);
+        }
+        .glow-border-magenta {
+            border: 1px solid rgba(245, 173, 255, 0.3);
+            box-shadow: 0 0 15px rgba(245, 173, 255, 0.1);
+        }
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(0, 238, 252, 0.2), transparent);
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-body-base text-on-surface selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 bg-background/80 backdrop-blur-xl dark:bg-background/80 border-b border-outline-variant/30 shadow-[0_0_15px_rgba(245,173,255,0.2)]">
+<div class="flex items-center gap-4">
+<img alt="AETHERWARE Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ug_Iuk1TJNYr4UJRgoqoqb6WbtiNnQcdJNSPTGRs7dY40CfIrVsMpmf12z5-Y1Drkz3B6606iuPsB0fVawDo5NyJ13IxksAx6iMG1e4FoSwC1UGENPx6J9jk1IM7ZxukP0LOiOYY1hSlgO23kBR77txyUIfxxVKvMmqQGYHvs9blP9xuaoodR1YOpPK7kgJMU7_nNds3O2xD9D_qCHoefSFSD-1_vA6wfUl0Wm0bOKgq2bsfjJzpjloCY028kPiI921YvzmcVh_"/>
+<span class="font-headline-lg text-headline-lg tracking-tighter text-primary dark:text-primary">AETHERWARE</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-primary font-data-mono uppercase tracking-widest hover:text-secondary transition-colors duration-300" href="#">Home</a>
+<a class="text-on-surface-variant font-data-mono uppercase tracking-widest hover:text-secondary transition-colors duration-300" href="#">User Registration</a>
+<a class="text-on-surface-variant font-data-mono uppercase tracking-widest hover:text-secondary transition-colors duration-300" href="#">Dashboard</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-primary material-symbols-outlined hover:text-secondary transition-colors duration-300">shield</button>
+<button class="text-primary material-symbols-outlined md:hidden">menu</button>
+</div>
+</header>
+<main class="pt-24 overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center px-margin">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary-container/10 blur-[120px] rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="font-data-mono text-[10px] uppercase tracking-widest text-primary">System Online: v4.0.2</span>
+</div>
+<h1 class="font-display-xl text-display-xl leading-tight">
+                        Latido impulsado por <span class="text-primary">datos</span> dentro del algoritmo.
+                    </h1>
+<p class="text-on-surface-variant text-headline-md font-body-base max-w-xl">
+                        Un impenetrable bastión digital diseñado para la optimización de alto rendimiento y la vigilancia proactiva.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-lg shadow-[0_0_20px_rgba(245,173,255,0.4)] hover:scale-105 transition-all">
+                            DESPLEGAR NÚCLEO
+                        </button>
+<button class="px-8 py-4 border border-secondary text-secondary font-bold rounded-lg hover:bg-secondary/10 transition-all flex items-center gap-2">
+                            VER PROTOCOLO <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary-container opacity-20 blur-xl group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative glass-card rounded-xl overflow-hidden aspect-square flex items-center justify-center glow-border-magenta">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A futuristic, high-tech server core room with glowing cyan and magenta data lines running across the floor and walls. A central holographic interface displays complex geometric code structures and security shields. The lighting is moody and dark, emphasized by the vibrant neon glows of the technological components, creating an atmosphere of impenetrable digital defense and advanced computing power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX8hWqy7Buzd2rr94oanoFV6bxGtqZgGJNuYeWLlSNZjpQBTR3n0_ZdwAQ4yXgkK3GNUBWri53HJj5rn07p9XY0J4e-_wJTb36Xpql-surPINCIn5-0t0AQl0SBUsbIrcqkSSnYsf2Ihk94vqTcfREl7YzclWZW5ZkjUWGWWYR2ZQo3IJx57WaRqGXC9ekW1ESW11Sc9i0DSEx3puLLD12uoCwXvjB06drVtH1axFfpT-HDhyWTVXUybb4rbXyXagTeY6AyGgpia4"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[120px] text-primary/40" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Purpose (Pulse) -->
+<section class="py-24 px-margin relative">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                            Nuestro Propósito: Pulse
+                        </h2>
+<div class="w-32 h-1 bg-primary/30"></div>
+</div>
+<p class="max-w-xl text-on-surface-variant font-body-base border-l-2 border-primary/20 pl-6">
+                        En Aetherware, decodificamos el caos del tráfico digital para crear un flujo de datos armónico y seguro. Pulse no es solo software; es la conciencia del algoritmo operando en tiempo real.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-card p-8 rounded-xl space-y-6 glow-border-cyan group hover:bg-surface-variant/30 transition-all">
+<div class="w-12 h-12 bg-secondary-container/20 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-secondary-container">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Vigilancia Total</h3>
+<p class="text-on-surface-variant text-body-sm">Monitorización constante de cada paquete de datos entrante, identificando patrones de amenaza antes de que se manifiesten.</p>
+<div class="h-px w-full bg-gradient-to-r from-secondary-container/50 to-transparent"></div>
+</div>
+<div class="glass-card p-8 rounded-xl space-y-6 glow-border-magenta group hover:bg-surface-variant/30 transition-all md:translate-y-8">
+<div class="w-12 h-12 bg-primary/20 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Red Neuronal</h3>
+<p class="text-on-surface-variant text-body-sm">Procesamiento distribuido que aprende de las interacciones para optimizar la velocidad del sistema dinámicamente.</p>
+<div class="h-px w-full bg-gradient-to-r from-primary/50 to-transparent"></div>
+</div>
+<div class="glass-card p-8 rounded-xl space-y-6 glow-border-cyan group hover:bg-surface-variant/30 transition-all">
+<div class="w-12 h-12 bg-secondary-container/20 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-secondary-container">lock</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Fortaleza Cifrada</h3>
+<p class="text-on-surface-variant text-body-sm">Protocolos de encriptación de grado militar que aseguran la integridad de la información en el núcleo del algoritmo.</p>
+<div class="h-px w-full bg-gradient-to-r from-secondary-container/50 to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Software Suite (Bento Grid) -->
+<section class="py-24 px-margin bg-surface-container-lowest/50">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-center mb-16 uppercase tracking-tighter">Software Suite <span class="text-primary">Ecosystem</span></h2>
+<div class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-6 h-auto lg:h-[600px]">
+<!-- Proactive Shield -->
+<div class="lg:col-span-2 lg:row-span-2 glass-card p-10 rounded-xl relative overflow-hidden flex flex-col justify-end glow-border-magenta">
+<div class="absolute top-0 right-0 p-10 opacity-10">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<div class="relative z-10 space-y-4">
+<span class="px-3 py-1 bg-primary/20 text-primary font-data-mono text-[10px] rounded border border-primary/30 uppercase">Sentinel Module</span>
+<h3 class="font-display-xl text-headline-lg">Proactive Shield</h3>
+<p class="text-on-surface-variant max-w-md">Una barrera inteligente que anticipa vulnerabilidades y bloquea intrusiones en tiempo real mediante análisis heurístico avanzado.</p>
+<ul class="space-y-2 pt-4">
+<li class="flex items-center gap-2 text-body-sm text-primary">
+<span class="material-symbols-outlined text-sm">check_circle</span> Prevención de Día Cero
+                                </li>
+<li class="flex items-center gap-2 text-body-sm text-primary">
+<span class="material-symbols-outlined text-sm">check_circle</span> Aislamiento de Procesos
+                                </li>
+</ul>
+</div>
+</div>
+<!-- Dynamic Optimization -->
+<div class="lg:col-span-2 glass-card p-8 rounded-xl flex items-center gap-8 glow-border-cyan">
+<div class="flex-1 space-y-4">
+<span class="px-3 py-1 bg-secondary-container/20 text-secondary-container font-data-mono text-[10px] rounded border border-secondary-container/30 uppercase">Engine Module</span>
+<h3 class="font-headline-md text-headline-md">Dynamic Optimization</h3>
+<p class="text-on-surface-variant text-body-sm">Ajuste automático de recursos para garantizar latencia cero en entornos críticos.</p>
+</div>
+<div class="hidden sm:block w-32 h-32 bg-secondary-container/10 rounded-full flex items-center justify-center border border-secondary-container/20">
+<span class="material-symbols-outlined text-4xl text-secondary-container animate-spin" style="animation-duration: 10s;">settings_motion_mode</span>
+</div>
+</div>
+<!-- Dashboard -->
+<div class="lg:col-span-2 glass-card p-8 rounded-xl flex items-center gap-8 glow-border-magenta">
+<div class="hidden sm:block w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-4xl text-primary">dashboard_customize</span>
+</div>
+<div class="flex-1 space-y-4 text-right">
+<span class="px-3 py-1 bg-primary/20 text-primary font-data-mono text-[10px] rounded border border-primary/30 uppercase">Control Center</span>
+<h3 class="font-headline-md text-headline-md">Master Dashboard</h3>
+<p class="text-on-surface-variant text-body-sm">Visualización de datos en tiempo real con interfaces personalizables HUD.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Subscription Plans -->
+<section class="py-24 px-margin relative overflow-hidden">
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4">Niveles de Acceso</h2>
+<p class="text-on-surface-variant font-data-mono uppercase tracking-widest text-sm">Selecciona tu nivel de integración en el ecosistema</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+<!-- Standard -->
+<div class="glass-card p-8 rounded-xl flex flex-col border border-outline-variant/30 hover:glow-border-cyan transition-all">
+<div class="mb-8">
+<h4 class="font-data-mono text-on-surface-variant uppercase mb-2">Standard</h4>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold font-display-xl">$25</span>
+<span class="text-on-surface-variant text-body-sm">/yr</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-secondary-container">check</span> Núcleo de Vigilancia</li>
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-secondary-container">check</span> Soporte Básico</li>
+<li class="flex items-center gap-3 text-body-sm opacity-40"><span class="material-symbols-outlined">close</span> Optimizador Dinámico</li>
+<li class="flex items-center gap-3 text-body-sm opacity-40"><span class="material-symbols-outlined">close</span> Dashboard Pro</li>
+</ul>
+<button class="w-full py-3 border border-outline text-on-surface-variant hover:border-secondary-container hover:text-secondary-container transition-all rounded font-bold uppercase text-xs tracking-widest">Iniciando Protocolo</button>
+</div>
+<!-- VIP (Popular) -->
+<div class="glass-card p-8 rounded-xl flex flex-col border-2 border-primary relative glow-border-magenta scale-105 z-10 shadow-[0_0_40px_rgba(245,173,255,0.15)]">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full">Más Popular</div>
+<div class="mb-8">
+<h4 class="font-data-mono text-primary uppercase mb-2">VIP Access</h4>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold font-display-xl text-primary">$30</span>
+<span class="text-primary/70 text-body-sm">/yr</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-primary">verified</span> Vigilancia Avanzada</li>
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-primary">verified</span> Soporte Prioritario 24/7</li>
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-primary">verified</span> Optimizador Dinámico</li>
+<li class="flex items-center gap-3 text-body-sm opacity-40"><span class="material-symbols-outlined">close</span> Dashboard Custom HUD</li>
+</ul>
+<button class="w-full py-3 bg-primary text-on-primary hover:bg-primary-container transition-all rounded font-bold uppercase text-xs tracking-widest shadow-lg">Elevar Privilegios</button>
+</div>
+<!-- Premium -->
+<div class="glass-card p-8 rounded-xl flex flex-col border border-outline-variant/30 hover:glow-border-cyan transition-all">
+<div class="mb-8">
+<h4 class="font-data-mono text-on-surface-variant uppercase mb-2">Premium</h4>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold font-display-xl">$50</span>
+<span class="text-on-surface-variant text-body-sm">/yr</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-secondary-container">check</span> Suite Completa Sentinel</li>
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-secondary-container">check</span> Soporte Directo Core</li>
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-secondary-container">check</span> Full Custom Dashboard</li>
+<li class="flex items-center gap-3 text-body-sm"><span class="material-symbols-outlined text-secondary-container">check</span> Integración Multisistema</li>
+</ul>
+<button class="w-full py-3 border border-outline text-on-surface-variant hover:border-secondary-container hover:text-secondary-container transition-all rounded font-bold uppercase text-xs tracking-widest">Acceso Total</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-gutter py-margin flex flex-col items-center space-y-8 mt-20 bg-surface-dim border-t border-outline-variant/20 mb-20">
+<div class="flex flex-col md:flex-row justify-between w-full max-w-container-max items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-3">
+<img alt="AETHERWARE" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ug_Iuk1TJNYr4UJRgoqoqb6WbtiNnQcdJNSPTGRs7dY40CfIrVsMpmf12z5-Y1Drkz3B6606iuPsB0fVawDo5NyJ13IxksAx6iMG1e4FoSwC1UGENPx6J9jk1IM7ZxukP0LOiOYY1hSlgO23kBR77txyUIfxxVKvMmqQGYHvs9blP9xuaoodR1YOpPK7kgJMU7_nNds3O2xD9D_qCHoefSFSD-1_vA6wfUl0Wm0bOKgq2bsfjJzpjloCY028kPiI921YvzmcVh_"/>
+<span class="font-headline-md text-primary tracking-tighter">AETHERWARE</span>
+</div>
+<p class="text-on-surface-variant text-body-sm font-data-mono max-w-xs text-center md:text-left">
+                    DATA-POWERED HEARTBEAT. PROTEGIENDO EL ALGORITMO DESDE 2024.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="https://www.instagram.com/_aetherware?igsh=MWtneGZhcGs5dXV0dg==">
+<img alt="Instagram" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgDvtastk_LSU1INnAYezTkbl5kRrPSEaWvG1Et_Mk7d5oe7mdem3j2XExHNlKLHrutCVL6k4JsLAHVyPiKNC7bTOPMDB6d416xnnxI_bLrui4ATxVY-FLXOkky5Es8ZeZGZcjGcr6nWYZCAh_t-CbU_986gXn0Msg_YpyonM4iIgPbDQSOR0qH29omOfGWGVDitSjI-KvkdkXJx9UsE5J00e_8bEhZMRjVW0NfwHlNrXvxYViHaowmWQ39KK0H8RqSElDizkYv08"/>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="https://www.tiktok.com/@aether.ware?_r=1&amp;_t=ZS-966H3rKw244&amp;fbclid=PAb21jcARpFNJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadDMpPKJ9cgSuy0fH5AZ56nXCHFLEbU-UAWoRiACbBib1jfQP2MNJnHJwwhPA_aem_ye8_B3l7AJPl3Dy-AOYuzQ">
+<img alt="TikTok" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSPNkcvkxxSgU8NiubtvVlW3XUyRF3_Vh_hLJ8YS5SxyjEmPILUodSChe-Nfs1vXZciY24KMnA-jDgjY6uYz3yVq3fi9We5dFLfTIDJ3lCBmTjGuK52VknYXqKeiS6XhRno9naefxf5TuaKD8LMXVtZOu4ZC0C8vrL0jRT-VhTQo2grBX_nxVB0aoBTG95iiViiZdDJFR3mCdkFes8E15qhd11V47w-QGYIKU5lzEz-wwcTwUUlP0KE68E-o0xi9TSpFow71hRNBo"/>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/share/1DVaaVKatt/">
+<img alt="Facebook" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg8Y50xqqdowKeWWZvthzMG_pHpeMrOTSyqBrzJp5V_yxttHXOSn8xKrJiBzwBcpC-JW-z2kGnH1PFM8O1FVSjgdci6sg4c9kP7MZpnpI58NK-QFOlgv-xNbjjyLrP32SQHsl5lz5pNGSOT-6YHiwJVz4tTySqCY_bkW8Z5Js54tsd-tIQOGeA2t65F3Hvd3skMbNr30U0PDYKSmE8FQ_4P99vrO7naBxUVC0Vx-4AN-BTIoKiFolYuO_FMGJwUA_FLdnNk085O1Y"/>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="https://wa.me/50257004228">
+<img alt="WhatsApp" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY7_2C2qXuHWOpk3rio9EeEvKBl9k1YoNiH9qJCr3Zv7MZxFEgXLGk40C9sah3pVQ_y67v5JccJr4STTTATf1wU6GS9wj68cyT6478Tch6F8Vh1riPGPwLHTB4X_CyvByauxcqFTFcSS3fD7aEVa2sLyNXIR2oHfzMnboTlOGxND8qpESy_Ec9Kw8RV3tRxH9ypFw1cjAOaavT8PmsFKyPxOaJSvHkaczAlzDu4t1hQlVo5X3pWjxKt8oDoVSpSWDT2qeEkIhPKWw"/>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="mailto:eatherwere@gmail.com">
+<span class="material-symbols-outlined text-primary">mail</span>
+</a>
+</div>
+</div>
+<div class="w-full h-px bg-outline-variant/10"></div>
+<div class="flex flex-col md:flex-row justify-between w-full max-w-container-max items-center gap-4 text-body-sm text-on-surface-variant/60 font-data-mono">
+<p>2025 BY DULCE MISHELL MENDOZA PROYECTO UMG</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin py-3 bg-surface-container/90 backdrop-blur-2xl border-t border-outline-variant/50 shadow-[0_-4px_20px_rgba(0,238,252,0.15)] rounded-t-xl">
+<a class="bg-secondary-container/20 text-secondary ring-1 ring-secondary/50 rounded-full p-2 scale-110 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="text-outline p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+</a>
+<a class="text-outline p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">speed</span>
+</a>
+<a class="text-outline p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+</nav>
+</body></html>
